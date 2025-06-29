@@ -45,7 +45,7 @@
         [data-theme="dark"]{
             --bg-color: #c2d6d6;
             --text-color: #660022;
-            --hover-bg: #ffccdd;
+            --hover-bg: #f2c0c0;
             --link-color: #cc0044;
             --link-hover-color: #e6004c;
             --header-border: rgba(92,75,55,0.1);
@@ -281,7 +281,7 @@
                         I was also the CEO and Co-Founder of <a href="https://cruisestartup.wixsite.com/cruiset" target="_blank">Cruise</a>, a writing productivity-creativity tool designed for students.
                     </p>
                     <p>
-                        Outside of research, I enjoy playing orchestral, chamber, and solo harp as well as running, speedskating, and graphic design.
+                        Outside of research, I enjoy playing orchestral, chamber, and solo harp as well as running, speedskating, and graphic design. I also give <a href="https://hudsonleila.wixsite.com/leilaharpsonm" target="_blank">harp lessons</a>!
                     </p>
                 </div>
                 <img src="profile.jpg" alt="Profile" class="profile-picture">
@@ -293,7 +293,7 @@
                         <a class="nav-link active" id="research-tab" data-toggle="tab" href="#research" role="tab" aria-controls="research" aria-selected="true">Academic Papers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">Personal Projects</a>
+                        <a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">Personal Projects</a>
                     </li>
                 </ul>
                 
@@ -311,8 +311,21 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="tab-pane fade show active" id="research" role="tabpanel" aria-labelledby="research-tab">
+                        <div class="publication" onclick="window.open('https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n', '_blank')">
+                            <h3><a href="https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n" target="_blank">Progress Towards Closed-Loop Control of Dynamic Spectrum Flattener</a> <span class="date-badge" style="float: right;">Nature, Light: Science & Applications</span></h3>
+                            <p>Leila Hudson</p>
+                            <p>
+                                Laser frequency combs (LFCs) can be used to calibrate high-resolution spectrographs to detect and characterize exoplanets. Spectral shaping serves an important role in increasing the signal-to-noise ratio (SNR) for effective detection. However, the large range of intensity across the LFC spectrum makes it infeasible to optimally use the entire comb; this leads to a reduced overall precision of calibration. To avoid this, setups are used to flatten the output spectrum before sending it to the spectrograph; these setups usually involve bulk optics. This research uses an all-photonic on-chip spectral shaper that flattens the spectrum of an LFC. The goal of my thesis is to improve the extraction, reduction, fitting, and subsequent control in an algorithmic manner with this spectral shaper to achieve a flat spectrum of an LFC. To flatten the power spectrum, I apply voltage changes to Mach-Zehnder Interferometers (MZIs) and Thermo-Optic Phase Modulators (TOPMs) at different spectral channels. I develop linear, logarithmic, and hybrid control-loop algorithms and test each model’s performance. I also test if the models are capable of converging to different reference power lines. I conduct field testing at the California Institute of Technology in Pasadena, CA. I find that the linear model performs the best since it reaches a defined power threshold and has sufficient convergence.
+                            </p>
+                            <p onclick="event.stopPropagation()" class="publication-links"> 
+                                <a href="https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n" target="_blank" class="publication-link-btn">Paper</a>
+                            </p>
+                        </div>
+                    </div>
                     
-                    <div class="tab-pane fade" id="blog" role="tabpanel" aria-labelledby="blog-tab">
+                    <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                         <div class="publication" onclick="window.open('https://gradientscience.org/contextcite-applications', '_blank')">
                             <h3><a href="https://gradientscience.org/contextcite-applications" target="_blank">Using ContextCite for LLM reliability</a> <span class="date-badge" style="float: right;">May 6, 2024</span></h3>
                             <p>
