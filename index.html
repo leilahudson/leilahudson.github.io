@@ -1,452 +1,410 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drop-in Minimal CSS</title>
-    <style type="text/css">
-      body {
-        padding-left: 24px;
-      }
-      #switcher {
-        position: sticky;
-        top: 0;
-        padding-bottom: 9px;
-        background: white;
-        box-shadow: 0 2px 1px -1px #ccc;
-        z-index: 999999;
-      }
-    </style>
-    <script type="text/javascript">
-      function quick_api() {
-        var geturl = location.href;
-        if (/\?/.test(geturl) == true) {
-          css = /\?([a-z\-_0-9]+)/.exec(geturl)[1];
-          head = document.getElementsByTagName('head')[0];
-          link = document.createElement('link');
-          link.rel="stylesheet";
-          link.type="text/css";
-          link.href="min/" + css + ".min.css";
-          head.appendChild(link);
-          window.id_store = css;
+    <title>Ben Cohen-Wang</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        (function() {
+            function getThemeBasedOnTime() {
+                const hour = new Date().getHours();
+                return (hour >= 19 || hour < 7) ? 'dark' : 'sepia';
+            }
+            
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+            const systemPreference = prefersDark.matches ? 'dark' : 'sepia';
+            const timeBasedTheme = getThemeBasedOnTime();
+            const currentTheme = savedTheme || systemPreference || timeBasedTheme;
+            document.documentElement.setAttribute('data-theme', currentTheme);
+        })();
+
+        // Theme toggle function
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'sepia' ? 'dark' : 'sepia';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
         }
-      }
-      function update_switcher() {
-        css_id = window.id_store;
-        if (css_id) {
-          switcher = window.switcher_dropdown;
-          switcher.value = css_id;
-        }
-      }
-      quick_api();
     </script>
-  </head>
-  <body onload="update_switcher()">
-    <div id="top" class="page" role="document">
-      <header role="banner">
-        <h1>Drop-in Minimal CSS</h1>
-        <p>This page provides an overview of barebones drop-in minimal CSS boilerplate frameworks. To switch to a different stylesheet, select one of the frameworks from the dropdown menu below. For more information, and links to all the frameworks seen here, visit the project page on <a href="https://github.com/dohliam/dropin-minimal-css">GitHub</a>.</p>
+    <style>
+        :root {
+            --bg-color: #f4ecd8;
+            --text-color: #5c4b37;
+            --hover-bg: #e8dcc8;
+            --link-color: #8b4513;
+            --link-hover-color: #d4691e;
+            --header-border: rgba(92,75,55,0.1);
+        }
 
-        <p><strong>New:</strong> Click or drag <a href="javascript:(function()%7Bvar%20body%20%3D%20document.getElementsByTagName('body')%5B0%5D%3Bscript%20%3D%20document.createElement('script')%3Bscript.type%3D%20'text%2Fjavascript'%3Bscript.src%3D%20'https%3A%2F%2Fdohliam.github.io%2Fdropin-minimal-css%2Fswitcher.js'%3Bbody.appendChild(script)%7D)()">this bookmarklet</a> to your bookmark bar to add a CSS switcher to any site!</p>
-      </header>
-      <nav role="navigation">
-        <ul>
-          <li><a href="#text">Text</a>: <a href="#text__headings">Headings</a> · <a href="#text__paragraphs">Paragraphs</a> · <a href="#text__blockquotes">Blockquotes</a> · <a href="#text__lists">Lists</a> · <a href="#text__hr">Horizontal rules</a> · <a href="#text__tables">Tabular data</a> · <a href="#text__code">Code</a> · <a href="#text__inline">Inline elements</a></li>
-          <li><a href="#embedded">Embedded content</a>: <a href="#embedded__images">Images</a> · <a href="#embedded__audio">Audio</a> · <a href="#embedded__video">Video</a> · <a href="#embedded__canvas">Canvas</a> · <a href="#embedded__meter">Meter</a> · <a href="#embedded__progress">Progress</a> · <a href="#embedded__svg">Inline SVG</a> · <a href="#embedded__iframe">IFrames</a></li>
-          <li><a href="#forms">Form elements</a>: <a href="#forms__input">Input fields</a> · <a href="#forms__select">Select menus</a> · <a href="#forms__checkbox">Checkboxes</a> · <a href="#forms__radio">Radio buttons</a> · <a href="#forms__textareas">Textareas</a> · <a href="#forms__html5">HTML5 inputs</a> · <a href="#forms__action">Action buttons</a></li>
-        </ul>
-      </nav>
-      <main role="main">
-        <section id="text">
-          <h1>Text</h1>
-          <article id="text__headings">
-              <h1>Headings</h1>
-            <div>
-              <h1>Heading 1</h1>
-              <h2>Heading 2</h2>
-              <h3>Heading 3</h3>
-              <h4>Heading 4</h4>
-              <h5>Heading 5</h5>
-              <h6>Heading 6</h6>
-            </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="text__paragraphs">
-            <h1>Paragraphs</h1>
-            <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra viverra nisl, vel maximus turpis ornare a. Ut scelerisque lectus sed odio dictum scelerisque vitae quis nisi. Nulla facilisi. Phasellus vehicula convallis nisl, id suscipit dui semper at. In eu iaculis lorem. In vehicula sed mauris et suscipit. Vivamus pellentesque non massa sit amet ornare. Integer placerat est vitae nisl molestie, eget rhoncus erat vulputate. Proin ornare massa eget bibendum faucibus.</p>
-            </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="text__blockquotes">
-            <h1>Blockquotes</h1>
-            <div>
-              <blockquote>
-                <p>Etiam porttitor egestas elit, at venenatis neque accumsan eu. Nulla viverra odio nisi, quis commodo tellus tristique non. Proin ac ante at orci euismod eleifend. Quisque nisi sapien, dapibus in venenatis sit amet, posuere non purus. In sit amet metus erat. Pellentesque nec neque eleifend, luctus ipsum at, ullamcorper nunc. Pellentesque sagittis, dolor eu bibendum lacinia, orci ex bibendum risus, at tincidunt augue lacus eleifend diam. Nulla facilisis velit ut est auctor sollicitudin. Morbi eget lectus a lacus maximus molestie in ut lorem.</p>
-                <p>Vestibulum ut erat sapien. Duis eros est, tempus a rutrum eu, rhoncus at ante. Vestibulum congue vel nunc et dapibus. Ut tristique facilisis orci ac pretium. Nunc et sodales turpis. Nulla pretium augue vitae faucibus tempor. Aliquam convallis mollis feugiat. Ut non pellentesque sem. Suspendisse interdum, neque at hendrerit varius, enim neque imperdiet enim, pellentesque efficitur leo orci non erat.</p>
-                <cite>Said no one, ever.</cite>
-              </blockquote>
-            </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="text__lists">
-            <h1>Lists</h1>
-            <div>
-              <h3>Definition list</h3>
-              <dl>
-                <dt>Definition List Title</dt>
-                <dd>This is a definition list division.</dd>
-              </dl>
-              <h3>Ordered List</h3>
-              <ol>
-                <li>List Item 1</li>
-                <li>List Item 2</li>
-                <li>List Item 3
-                  <ol>
-                    <li>Nested Ordered List Item 3.1</li>
-                    <li>Nested Ordered List Item 3.2</li>
-                    <li>Nested Ordered List Item 3.3</li>
-                  </ol>
-                </li>
-                <li>List Item 4
-                  <ul>
-                    <li>Nested Unordered List Item 4.1</li>
-                    <li>Nested Unordered List Item 4.2</li>
-                    <li>Nested Unordered List Item 4.3</li>
-                  </ul>
-                </li>
-              </ol>
-              <h3>Unordered List</h3>
-              <ul>
-                <li>List Item 1</li>
-                <li>List Item 2</li>
-                <li>List Item 3
-                  <ol>
-                    <li>Nested Ordered List Item 3.1</li>
-                    <li>Nested Ordered List Item 3.2</li>
-                    <li>Nested Ordered List Item 3.3</li>
-                  </ol>
-                </li>
-                <li>List Item 4
-                  <ul>
-                    <li>Nested Unordered List Item 4.1</li>
-                    <li>Nested Unordered List Item 4.2</li>
-                    <li>Nested Unordered List Item 4.3</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="text__hr">
-            <h1>Horizontal rules</h1>
-            <div>
-              <hr>
-            </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="text__tables">
-            <h1>Tabular data</h1>
-            <table>
-              <caption>Table Caption</caption>
-              <thead>
-                <tr>
-                  <th>Table Heading 1</th>
-                  <th>Table Heading 2</th>
-                  <th>Table Heading 3</th>
-                  <th>Table Heading 4</th>
-                  <th>Table Heading 5</th>
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>Table Footer 1</th>
-                  <th>Table Footer 2</th>
-                  <th>Table Footer 3</th>
-                  <th>Table Footer 4</th>
-                  <th>Table Footer 5</th>
-                </tr>
-              </tfoot>
-              <tbody>
-                <tr>
-                  <td>Table Cell 1</td>
-                  <td>Table Cell 2</td>
-                  <td>Table Cell 3</td>
-                  <td>Table Cell 4</td>
-                  <td>Table Cell 5</td>
-                </tr>
-                <tr>
-                  <td>Table Cell 1</td>
-                  <td>Table Cell 2</td>
-                  <td>Table Cell 3</td>
-                  <td>Table Cell 4</td>
-                  <td>Table Cell 5</td>
-                </tr>
-                <tr>
-                  <td>Table Cell 1</td>
-                  <td>Table Cell 2</td>
-                  <td>Table Cell 3</td>
-                  <td>Table Cell 4</td>
-                  <td>Table Cell 5</td>
-                </tr>
-                <tr>
-                  <td>Table Cell 1</td>
-                  <td>Table Cell 2</td>
-                  <td>Table Cell 3</td>
-                  <td>Table Cell 4</td>
-                  <td>Table Cell 5</td>
-                </tr>
-              </tbody>
-            </table>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="text__code">
-            <h1>Code</h1>
-            <div>
-              <p><strong>Keyboard input:</strong> <kbd>Cmd</kbd></p>
-              <p><strong>Inline code:</strong> <code>&lt;div&gt;code&lt;/div&gt;</code></p>
-              <p><strong>Sample output:</strong> <samp>This is sample output from a computer program.</samp></p>
-              <h2>Pre-formatted text</h2>
-              <pre>  P R E F O R M A T T E D T E X T
-  ! " # $ % &amp; ' ( ) * + , - . /
-  0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
-  @ A B C D E F G H I J K L M N O
-  P Q R S T U V W X Y Z [ \ ] ^ _
-  ` a b c d e f g h i j k l m n o
-  p q r s t u v w x y z { | } ~ </pre>
-            </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="text__inline">
-            <h1>Inline elements</h1>
-            <div>
-              <a href="#!">This is a text link</a>.<br>
-              <strong>Strong is used to indicate strong importance.</strong><br>
-              <em>This text has added emphasis.</em><br>
-              The <b>b element</b> is stylistically different text from normal text, without any special importance.<br>
-              The <i>i element</i> is text that is offset from the normal text.<br>
-              The <u>u element</u> is text with an unarticulated, though explicitly rendered, non-textual annotation.<br>
-              <del>This text is deleted</del> and <ins>This text is inserted</ins>.<br>
-              <s>This text has a strikethrough</s>.<br>
-              Superscript<sup>®</sup>.<br>
-              Subscript for things like H<sub>2</sub>O.<br>
-              <small>This small text is small for for fine print, etc.</small><br>
-              Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr><br>
-              <q cite="https://developer.mozilla.org/en-US/docs/HTML/Element/q">This text is a short inline quotation.</q><br>
-              <cite>This is a citation.</cite><br>
-              The <dfn>dfn element</dfn> indicates a definition.<br>
-              The <mark>mark element</mark> indicates a highlight.<br>
-              The <var>variable element</var>, such as <var>x</var> = <var>y</var>.<br>
-              The time element: <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time><br>
-            </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-        </section>
+        [data-theme="dark"] {
+            --bg-color: #1a1a2e;
+            --text-color: #ffffff;
+            --hover-bg: #2d2d4d;
+            --link-color: hsl(217, 78%, 70%);
+            --link-hover-color: hsl(217, 100%, 85%);
+            --header-border: rgba(255,255,255,0.1);
+        }
 
-        <section id="embedded">
-          <h1>Embedded content</h1>
-          <article id="embedded__images">
-            <h2>Images</h2>
-            <div>
-              <h3>No <code>&lt;figure&gt;</code> element</h3>
-              <p><a href="https://commons.wikimedia.org/wiki/File:Colouring_pencils.jpg"><img src="https://raw.githubusercontent.com/dohliam/html5-sample-media/master/Colouring_pencils.jpg" alt="Colouring pencils by MichaelMaggs"></a></p>
-              <h3>Wrapped in a <code>&lt;figure&gt;</code> element, no <code>&lt;figcaption&gt;</code></h3>
-              <figure><a href="https://commons.wikimedia.org/wiki/File:Coloured,_textured_craft_card_edit.jpg"><img src="https://raw.githubusercontent.com/dohliam/html5-sample-media/master/Coloured%2C_textured_craft_card_edit.jpg" alt="Coloured, textured craft card by MichaelMaggs"></a></figure>
-              <h3>Wrapped in a <code>&lt;figure&gt;</code> element, with a <code>&lt;figcaption&gt;</code></h3>
-              <figure>
-                <a href="https://commons.wikimedia.org/wiki/File:Opening_chess_position_from_black_side.jpg"><img src="https://raw.githubusercontent.com/dohliam/html5-sample-media/master/Opening_chess_position_from_black_side.jpg" alt="Opening chess position from black side by MichaelMaggs"></a>
-                <figcaption>Here is a caption for this image.</figcaption>
-              </figure>
+        body { 
+            font-family: 'Raleway', sans-serif;
+            padding-top: 50px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            /* transition: background-color 0.3s ease, color 0.3s ease; */
+            font-size: 1.1rem;
+        }
+        .profile-picture { 
+            max-width: 200px; 
+            margin-left: 30px;
+        }
+        .profile-content { 
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+        }
+        .site-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .contact-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .publication {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .publication:hover {
+            background-color: var(--hover-bg);
+        }
+        .publication h3 {
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            /* transition: all 0.3s ease; */
+        }
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+            /* transform: translateY(-2px); */
+        }
+        /* .contact-link {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: var(--hover-bg);
+            border: 1px solid var(--link-color);
+            white-space: nowrap;
+        }
+        .contact-link:hover {
+            color: var(--link-hover-color);
+            text-decoration: none;
+            background-color: var(--bg-color);
+            border-color: var(--link-hover-color);
+            transform: translateY(-2px);
+        } */
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: none;
+            background-color: var(--hover-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            font-size: 1.1rem;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.8;
+        }
+        
+        .nav-tabs {
+            border-bottom: 1px solid var(--header-border);
+            margin-bottom: 20px;
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--text-color);
+            border: none;
+            border-bottom: 2px solid transparent;
+            background-color: transparent;
+            padding: 12px 25px;
+            margin-right: 10px;
+            /* transition: all 0.3s ease; */
+            font-size: 1.2rem;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--link-color);
+            border-bottom: 2px solid var(--link-color);
+            background-color: transparent;
+        }
+        
+        .nav-tabs .nav-link:hover:not(.active) {
+            border-bottom: 2px solid var(--link-color);
+            color: var(--link-color);
+            transition: all 0.2s ease;
+        }
+        
+        .tab-content {
+            padding-top: 20px;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .blog-post {
+            padding: 15px;
+            border-radius: 8px;
+            /* transition: all 0.3s ease; */
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        .blog-post:hover {
+            background-color: var(--hover-bg);
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                justify-content: center;
+                width: 100%;
+            }
+
+            body {
+                padding-top: 70px;
+            }
+        }
+        .date-badge {
+            font-style: italic;
+            font-weight: normal;
+        }
+        .publication-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .publication-link-btn {
+            padding: 4px 8px;
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--link-color);
+            border: 1px solid var(--link-color);
+            /* transition: all 0.2s ease; */
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .publication-link-btn:hover {
+            background-color: var(--hover-bg);
+            color: var(--link-hover-color);
+            border-color: var(--link-hover-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NLKRMF16H"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-4NLKRMF16H');
+</script>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i></button>
+    <div class="container">
+        <div class="site-header">
+            <h2>Ben Cohen-Wang</h2>
+            <div class="contact-info">
+                <a class="icons" href="mailto:bencw@mit.edu" target="_blank"><i class="fas fa-envelope fa-lg"></i></a>
+                <a class="icons" href="https://x.com/bcohenwang" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+                <a class="icons" href="https://scholar.google.com/citations?user=QwJR7jEAAAAJ&hl" target="_blank"><i class="fas fa-graduation-cap fa-lg"></i></a>
+                <a class="icons" href="https://www.linkedin.com/in/ben-cohen-wang-b8a81211a/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a class="icons" href="https://github.com/bencw99" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+                <a class="icons" href="https://www.strava.com/athletes/95589914" target="_blank"><i class="fab fa-strava fa-lg"></i></a>
             </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="embedded__audio">
-            <h2>Audio</h2>
-            <div>
-              <audio controls>
-                <source src="https://raw.githubusercontent.com/dohliam/html5-sample-media/master/Broke For Free - Night Owl.mp3">
-              </audio>
+        </div>
+        <div class="row">
+            <div class="col-md-12 profile-content">
+                <div>
+                    <p>
+                        I'm a PhD student in EECS at <a href="https://mit.edu" target="_blank">MIT</a> where I am fortunate to be advised by <a href="https://madry.mit.edu" target="_blank">Aleksander Mądry</a>. 
+                        I received my BS in computer science from <a href="https://stanford.edu" target="_blank">Stanford</a>, and spent two great years at <a href="https://robustintelligence.com" target="_blank">Robust Intelligence</a> before starting my PhD.
+                    </p>
+                    <p>
+                        I am interested in how we can develop AI systems that can be safely deployed.
+                        Outside of research, I enjoy running, climbing, skiing, tennis and volleyball.
+                    </p>
+                </div>
+                <img src="files/images/profile.png" alt="Profile" class="profile-picture">
             </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="embedded__video">
-            <h2>Video</h2>
-            <div>
-              <video controls>
-                <source src="https://github.com/benhosmer/HTML5-Test-Videos/blob/master/big_buck_bunny.mp4?raw=true" type="video/mp4">
-                <source src="https://github.com/benhosmer/HTML5-Test-Videos/blob/master/big_buck_bunny.ogv?raw=true" type="video/ogg">
-              </video>
+
+            <div class="col-md-12 mt-4">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="research-tab" data-toggle="tab" href="#research" role="tab" aria-controls="research" aria-selected="true">Selected papers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">Blog posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="software-tab" data-toggle="tab" href="#software" role="tab" aria-controls="software" aria-selected="false">Software</a>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="research" role="tabpanel" aria-labelledby="research-tab">
+                        <p><em>For a full list of papers, see <a href="https://scholar.google.com/citations?user=QwJR7jEAAAAJ&hl" target="_blank">Google Scholar</a>.</em></p>
+                        <div class="publication" onclick="window.open('https://arxiv.org/abs/2409.00729', '_blank')">
+                            <h3><a href="https://arxiv.org/abs/2409.00729" target="_blank">ContextCite: Attributing Model Generation to Context</a> <span class="date-badge" style="float: right;">NeurIPS 2024</span></h3>
+                            <p><strong>Benjamin Cohen-Wang*</strong>, Harshay Shah*, Kristian Georgiev*, Aleksander Mądry</p>
+                            <p>
+                                Language models may need external information to provide a response to a given query.
+                                We would provide this information as <em>context</em> and expect the model to interact with it when responding to the query.
+                                But how would we know if the model actually used the context, misinterpreted anything, or made something up?
+                                We present ContextCite, a method for attributing statements generated by language models back to specific information provided in-context.
+                            </p>
+                            <p onclick="event.stopPropagation()" class="publication-links"> 
+                                <a href="https://arxiv.org/abs/2409.00729" target="_blank" class="publication-link-btn">Paper</a>
+                                <a href="https://gradientscience.org/contextcite" target="_blank" class="publication-link-btn">Blog post #1</a>
+                                <a href="https://gradientscience.org/contextcite-applications" target="_blank" class="publication-link-btn">Blog post #2</a>
+                                <a href="https://huggingface.co/spaces/contextcite/context-cite" target="_blank" class="publication-link-btn">Demo</a>
+                                <a href="https://github.com/MadryLab/context-cite" target="_blank" class="publication-link-btn">Code</a>
+                            </p>
+                        </div>
+                        <div class="publication" onclick="window.open('https://arxiv.org/abs/2403.00194', '_blank')">
+                            <h3><a href="https://arxiv.org/abs/2403.00194" target="_blank">Ask Your Distribution Shift if Pre-Training is Right for You</a> <span class="date-badge" style="float: right;">TMLR 2025</span></h3>
+                            <p><strong>Benjamin Cohen-Wang</strong>, Joshua Vendrow, Aleksander Mądry</p>
+                            <p>
+                                <em>Pre-training</em> on a large and diverse general-purpose dataset and then <em>fine-tuning</em> on a task-specific dataset can be an effective approach for developing models that are robust to distribution shifts.
+                                In practice, this method helps significantly in some cases, but not <em>at all</em> in others.
+                                In this work, we characterize the failure modes that pre-training <em>can</em> and <em>cannot</em> address.
+                            </p>
+                            <p onclick="event.stopPropagation()" class="publication-links"> 
+                                <a href="https://arxiv.org/abs/2403.00194" target="_blank" class="publication-link-btn">Paper</a>
+                                <a href="https://gradientscience.org/pretraining-robustness/" target="_blank" class="publication-link-btn">Blog post #1</a>
+                                <a href="https://gradientscience.org/harnessing-pretraining/" target="_blank" class="publication-link-btn">Blog post #2</a>
+                                <a href="https://github.com/MadryLab/pretraining-distribution-shift-robustness" target="_blank" class="publication-link-btn">Code</a>
+                            </p>
+                        </div>
+                        <div class="publication" onclick="window.open('https://arxiv.org/abs/2504.13752', '_blank')">
+                            <h3><a href="https://arxiv.org/abs/2504.13752" target="_blank">Learning to Attribute with Attention</a> <span class="date-badge" style="float: right;">Preprint</span></h3>
+                            <p><strong>Benjamin Cohen-Wang</strong>, Yung-Sung Chuang, Aleksander Mądry</p>
+                            <p>
+                                It can be helpful to pinpoint the in-context information that a language model uses when generating content (Is it using provided documents? Or its own intermediate thoughts?). We present Attribution with Attention (AT2), a method for doing so efficiently and reliably.
+                            </p>
+                            <p onclick="event.stopPropagation()" class="publication-links"> 
+                                <a href="https://arxiv.org/abs/2504.13752" target="_blank" class="publication-link-btn">Paper</a>
+                                <a href="https://bencw99.github.io/at2-citations" target="_blank" class="publication-link-btn">Demo</a>
+                                <a href="https://github.com/MadryLab/AT2" target="_blank" class="publication-link-btn">Code</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="blog" role="tabpanel" aria-labelledby="blog-tab">
+                        <div class="publication" onclick="window.open('https://gradientscience.org/contextcite-applications', '_blank')">
+                            <h3><a href="https://gradientscience.org/contextcite-applications" target="_blank">Using ContextCite for LLM reliability</a> <span class="date-badge" style="float: right;">May 6, 2024</span></h3>
+                            <p>
+                                We use ContextCite to detect unverified statements and discover poisoned documents.
+                            </p>
+                        </div>
+                        <div class="publication" onclick="window.open('https://gradientscience.org/contextcite', '_blank')">
+                            <h3><a href="https://gradientscience.org/contextcite" target="_blank">ContextCite: Attributing Model Generation to Context</a> <span class="date-badge" style="float: right;">May 6, 2024</span></h3>
+                            <p>
+                                We present ContextCite, a method for attributing statements generated by language models back to specific information provided in-context.
+                            </p>
+                        </div>
+                        <div class="publication" onclick="window.open('https://gradientscience.org/harnessing-pretraining/', '_blank')">
+                            <h3><a href="https://gradientscience.org/harnessing-pretraining/" target="_blank">How Can We Harness Pre-Training to Develop Robust Models?</a> <span class="date-badge" style="float: right;">March 4, 2024</span></h3>
+                            <p>
+                                We explore a simple principle for harnessing pre-training to develop robust models.
+                            </p>
+                        </div>
+                        <div class="publication" onclick="window.open('https://gradientscience.org/pretraining-robustness/', '_blank')">
+                            <h3><a href="https://gradientscience.org/pretraining-robustness/" target="_blank">Ask Your Distribution Shift if Pre-Training is Right for You</a> <span class="date-badge" style="float: right;">March 4, 2024</span></h3>
+                            <p>
+                                We study the robustness benefits of pre-training and characterize failure modes that pre-training can and cannot address.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="software" role="tabpanel" aria-labelledby="software-tab">
+                        <div class="publication" onclick="window.open('https://github.com/MadryLab/context-cite', '_blank')">
+                            <div class="d-flex align-items-center">
+                                <img src="files/images/contextcite_logo.png" alt="ContextCite Logo" class="mr-3" style="border-radius: 5px; max-height: 100px; width: auto; margin-bottom: 15px;">
+                            </div>
+                            <p>
+                                Attribute (or cite) statements generated by LLMs back to in-context information.
+                            </p>
+                            <p onclick="event.stopPropagation()" class="publication-links"> 
+                                <a href="https://github.com/MadryLab/context-cite" target="_blank" class="publication-link-btn">GitHub repository</a>
+                                <a href="https://huggingface.co/spaces/contextcite/context-cite" target="_blank" class="publication-link-btn">Hugging Face demo</a>
+                                <a href="https://pypi.org/project/context-cite/" target="_blank" class="publication-link-btn">PyPI package</a>
+                            </p>
+                        </div>
+                        <div class="publication" onclick="window.open('https://github.com/MadryLab/AT2', '_blank')">
+                            <div class="d-flex align-items-center">
+                                <img src="files/images/at2_logo.png" alt="AT2 Logo" class="mr-3" style="border-radius: 5px; max-height: 100px; width: auto; margin-bottom: 15px;">
+                            </div>
+                            <p>
+                                Efficiently attribute generated content to in-context information using attention.
+                            </p>
+                            <p onclick="event.stopPropagation()" class="publication-links"> 
+                                <a href="https://github.com/MadryLab/AT2" target="_blank" class="publication-link-btn">GitHub repository</a>
+                                <a href="https://bencw99.github.io/at2-citations" target="_blank" class="publication-link-btn">Demo</a>
+                                <a href="https://pypi.org/project/at2/" target="_blank" class="publication-link-btn">PyPI package</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="embedded__canvas">
-            <h2>Canvas</h2>
-            <div><canvas>canvas</canvas></div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="embedded__meter">
-            <h2>Meter</h2>
-            <div><meter value="2" min="0" max="10">2 out of 10</meter></div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="embedded__progress">
-            <h2>Progress</h2>
-            <div><progress>progress</progress></div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="embedded__svg">
-            <h2>Inline SVG</h2>
-            <div><svg width="100px" height="100px"><circle cx="100" cy="100" r="100" fill="#1fa3ec"></circle></svg></div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-          <article id="embedded__iframe">
-            <h2>IFrame</h2>
-            <div><iframe src="index.html" height="300"></iframe></div>
-            <footer><p><a href="#top">[Top]</a></p></footer>
-          </article>
-        </section>
-        <section id="forms">
-          <h1>Form elements</h1>
-          <form>
-            <fieldset id="forms__input">
-              <legend>Input fields</legend>
-              <p>
-                <label for="input__text">Text Input</label>
-                <input id="input__text" type="text" placeholder="Text Input">
-              </p>
-              <p>
-                <label for="input__password">Password</label>
-                <input id="input__password" type="password" placeholder="Type your Password">
-              </p>
-              <p>
-                <label for="input__webaddress">Web Address</label>
-                <input id="input__webaddress" type="url" placeholder="http://yoursite.com">
-              </p>
-              <p>
-                <label for="input__emailaddress">Email Address</label>
-                <input id="input__emailaddress" type="email" placeholder="name@email.com">
-              </p>
-              <p>
-                <label for="input__phone">Phone Number</label>
-                <input id="input__phone" type="tel" placeholder="(999) 999-9999">
-              </p>
-              <p>
-                <label for="input__search">Search</label>
-                <input id="input__search" type="search" placeholder="Enter Search Term">
-              </p>
-              <p>
-                <label for="input__text2">Number Input</label>
-                <input id="input__text2" type="number" placeholder="Enter a Number">
-              </p>
-              <p>
-                <label for="input__text3" class="error">Error</label>
-                <input id="input__text3" class="is-error" type="text" placeholder="Text Input">
-              </p>
-              <p>
-                <label for="input__text4" class="valid">Valid</label>
-                <input id="input__text4" class="is-valid" type="text" placeholder="Text Input">
-              </p>
-            </fieldset>
-            <p><a href="#top">[Top]</a></p>
-            <fieldset id="forms__select">
-              <legend>Select menus</legend>
-              <p>
-                <label for="select">Select</label>
-                <select id="select">
-                  <optgroup label="Option Group">
-                    <option>Option One</option>
-                    <option>Option Two</option>
-                    <option>Option Three</option>
-                  </optgroup>
-                </select>
-              </p>
-            </fieldset>
-            <p><a href="#top">[Top]</a></p>
-            <fieldset id="forms__checkbox">
-              <legend>Checkboxes</legend>
-              <ul class="list list--bare">
-                <li><label for="checkbox1"><input id="checkbox1" name="checkbox" type="checkbox" checked="checked"> Choice A</label></li>
-                <li><label for="checkbox2"><input id="checkbox2" name="checkbox" type="checkbox"> Choice B</label></li>
-                <li><label for="checkbox3"><input id="checkbox3" name="checkbox" type="checkbox"> Choice C</label></li>
-              </ul>
-            </fieldset>
-            <p><a href="#top">[Top]</a></p>
-            <fieldset id="forms__radio">
-              <legend>Radio buttons</legend>
-              <ul class="list list--bare">
-                <li><label for="radio1"><input id="radio1" name="radio" type="radio" class="radio" checked="checked"> Option 1</label></li>
-                <li><label for="radio2"><input id="radio2" name="radio" type="radio" class="radio"> Option 2</label></li>
-                <li><label for="radio3"><input id="radio3" name="radio" type="radio" class="radio"> Option 3</label></li>
-              </ul>
-            </fieldset>
-            <p><a href="#top">[Top]</a></p>
-            <fieldset id="forms__textareas">
-              <legend>Textareas</legend>
-              <p>
-                <label for="textarea">Textarea</label>
-                <textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea>
-              </p>
-            </fieldset>
-            <p><a href="#top">[Top]</a></p>
-            <fieldset id="forms__html5">
-              <legend>HTML5 inputs</legend>
-              <p>
-                <label for="ic">Color input</label>
-                <input type="color" id="ic" value="#000000">
-              </p>
-              <p>
-                <label for="in">Number input</label>
-                <input type="number" id="in" min="0" max="10" value="5">
-              </p>
-              <p>
-                <label for="ir">Range input</label>
-                <input type="range" id="ir" value="10">
-              </p>
-              <p>
-                <label for="idd">Date input</label>
-                <input type="date" id="idd" value="1970-01-01">
-              </p>
-              <p>
-                <label for="idm">Month input</label>
-                <input type="month" id="idm" value="1970-01">
-              </p>
-              <p>
-                <label for="idw">Week input</label>
-                <input type="week" id="idw" value="1970-W01">
-              </p>
-              <p>
-                <label for="idt">Datetime input</label>
-                <input type="datetime" id="idt" value="1970-01-01T00:00:00Z">
-              </p>
-              <p>
-                <label for="idtl">Datetime-local input</label>
-                <input type="datetime-local" id="idtl" value="1970-01-01T00:00">
-              </p>
-            </fieldset>
-            <p><a href="#top">[Top]</a></p>
-            <fieldset id="forms__action">
-              <legend>Action buttons</legend>
-              <p>
-                <input type="submit" value="<input type=submit>">
-                <input type="button" value="<input type=button>">
-                <input type="reset" value="<input type=reset>">
-                <input type="submit" value="<input disabled>" disabled>
-              </p>
-              <p>
-                <button type="submit">&lt;button type=submit&gt;</button>
-                <button type="button">&lt;button type=button&gt;</button>
-                <button type="reset">&lt;button type=reset&gt;</button>
-                <button type="button" disabled>&lt;button disabled&gt;</button>
-              </p>
-            </fieldset>
-            <p><a href="#top">[Top]</a></p>
-          </form>
-        </section>
-      </main>
-      <footer role="contentinfo">
-        <p>View this project on <a href="https://github.com/dohliam/dropin-minimal-css">GitHub</a>.</p>
-      </footer>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <p style="color: var(--text-color); opacity: 0.6; font-size: 0.9rem;">Last updated on March 6, 2025</p>
+            </div>
+        </div>
     </div>
-    <script src="./switcher.js" type="text/javascript"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
