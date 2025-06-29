@@ -281,7 +281,7 @@
                         I was also the CEO and Co-Founder of <a href="https://cruisestartup.wixsite.com/cruiset" target="_blank">Cruise</a>, a writing productivity-creativity tool designed for students.
                     </p>
                     <p>
-                        Outside of research, I enjoy playing orchestral, chamber, and solo harp as well as running, speedskating, and graphic design. I also give <a href="https://hudsonleila.wixsite.com/leilaharpsonm" target="_blank">harp lessons</a>!
+                        Outside of research, I enjoy playing orchestral, chamber, and solo harp as well as running, electronic music production, graphic design, and speedskating. I also give <a href="https://hudsonleila.wixsite.com/leilaharpsonm" target="_blank">harp lessons</a>!
                     </p>
                 </div>
                 <img src="profile.jpg" alt="Profile" class="profile-picture">
@@ -295,36 +295,39 @@
                     <li class="nav-item">
                         <a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">Personal Projects</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="music-tab" data-toggle="tab" href="#music" role="tab" aria-controls="music" aria-selected="false">Music</a>
+                    </li>
                 </ul>
                 
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="research" role="tabpanel" aria-labelledby="research-tab">
-                        <p><em>For a full list of papers, see <a href="https://scholar.google.com/citations?user=eUZ-MycAAAAJ&hl=en" target="_blank">Google Scholar</a>.</em></p>
-                        <div class="publication" onclick="window.open('https://www.nature.com/articles/s41377-023-01362-5', '_blank')">
-                            <h3><a href="https://www.nature.com/articles/s41377-023-01362-5" target="_blank">A system-on-chip microwave photonic processor solves dynamic RF interference in real time with ps latency</a> <span class="date-badge" style="float: right;">Nature, Light: Science & Applications</span></h3>
-                            <p>Weipeng Zhang, Joshua C. Lederman, Thomas Ferreira de Lima, Jiawei Zhang, Simon Bilodeau, Leila Hudson, Alexander Tait, Bhavin J. Shastri & Paul R. Prucnal</p>
-                            <p>
-                                Radio-frequency interference is a growing concern as wireless technology advances, with consequences like interference between radar altimeters and 5G cellular networks. These challenges will worsen as future wireless technologies adopt higher carrier frequencies and data rates. This paper introduces a photonic processor to address dynamic interference through blind source separation (BSS). Our system-on-chip processor employs a fully integrated photonic signal pathway in the analogue domain. To complement the photonic processor, electronic peripherals based on field-programmable gate array (FPGA) assess the effectiveness of demixing and continuously update demixing weights. We experimentally demonstrate the processor’s ability to suppress transmission errors and maintain signal-to-noise ratios in two scenarios, radar altimeters and mobile communications.
-                            </p>
-                            <p onclick="event.stopPropagation()" class="publication-links"> 
-                                <a href="https://www.nature.com/articles/s41377-023-01362-5" target="_blank" class="publication-link-btn">Paper</a>
-                            </p>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="research" role="tabpanel" aria-labelledby="research-tab">
+                            <p><em>For a full list of papers, see <a href="https://scholar.google.com/citations?user=eUZ-MycAAAAJ&hl=en" target="_blank">Google Scholar</a>.</em></p>
+                            <div class="publication" onclick="window.open('https://www.nature.com/articles/s41377-023-01362-5', '_blank')">
+                                <h3><a href="https://www.nature.com/articles/s41377-023-01362-5" target="_blank">A system-on-chip microwave photonic processor solves dynamic RF interference in real time with ps latency</a> <span class="date-badge" style="float: right;">Nature, Light: Science & Applications</span></h3>
+                                <p>Weipeng Zhang, Joshua C. Lederman, Thomas Ferreira de Lima, Jiawei Zhang, Simon Bilodeau, Leila Hudson, Alexander Tait, Bhavin J. Shastri & Paul R. Prucnal</p>
+                                <p>
+                                    Radio-frequency interference is a growing concern as wireless technology advances, with consequences like interference between radar altimeters and 5G cellular networks. These challenges will worsen as future wireless technologies adopt higher carrier frequencies and data rates. This paper introduces a photonic processor to address dynamic interference through blind source separation (BSS). Our system-on-chip processor employs a fully integrated photonic signal pathway in the analogue domain. To complement the photonic processor, electronic peripherals based on field-programmable gate array (FPGA) assess the effectiveness of demixing and continuously update demixing weights. We experimentally demonstrate the processor’s ability to suppress transmission errors and maintain signal-to-noise ratios in two scenarios, radar altimeters and mobile communications.
+                                </p>
+                                <p onclick="event.stopPropagation()" class="publication-links"> 
+                                    <a href="https://www.nature.com/articles/s41377-023-01362-5" target="_blank" class="publication-link-btn">Paper</a>
+                                </p>
+                            </div>
+                        </div>
+    
+                        <div class="tab-pane fade show active" id="research" role="tabpanel" aria-labelledby="research-tab">
+                            <div class="publication" onclick="window.open('https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n', '_blank')">
+                                <h3><a href="https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n" target="_blank">Progress Towards Closed-Loop Control of Dynamic Spectrum Flattener</a> <span class="date-badge" style="float: right;">Undergraduate Senior Thesis</span></h3>
+                                <p>Leila Hudson</p>
+                                <p>
+                                    Laser frequency combs (LFCs) can be used to calibrate high-resolution spectrographs to detect and characterize exoplanets. Spectral shaping serves an important role in increasing the signal-to-noise ratio (SNR) for effective detection. However, the large range of intensity across the LFC spectrum makes it infeasible to optimally use the entire comb; this leads to a reduced overall precision of calibration. To avoid this, setups are used to flatten the output spectrum before sending it to the spectrograph; these setups usually involve bulk optics. This research uses an all-photonic on-chip spectral shaper that flattens the spectrum of an LFC. The goal of my thesis is to improve the extraction, reduction, fitting, and subsequent control in an algorithmic manner with this spectral shaper to achieve a flat spectrum of an LFC. To flatten the power spectrum, I apply voltage changes to Mach-Zehnder Interferometers (MZIs) and Thermo-Optic Phase Modulators (TOPMs) at different spectral channels. I develop linear, logarithmic, and hybrid control-loop algorithms and test each model’s performance. I also test if the models are capable of converging to different reference power lines. I conduct field testing at the California Institute of Technology in Pasadena, CA. I find that the linear model performs the best since it reaches a defined power threshold and has sufficient convergence.
+                                </p>
+                                <p onclick="event.stopPropagation()" class="publication-links"> 
+                                    <a href="https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n" target="_blank" class="publication-link-btn">Paper</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="tab-pane fade show active" id="research" role="tabpanel" aria-labelledby="research-tab">
-                        <div class="publication" onclick="window.open('https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n', '_blank')">
-                            <h3><a href="https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n" target="_blank">Progress Towards Closed-Loop Control of Dynamic Spectrum Flattener</a> <span class="date-badge" style="float: right;">Undergraduate Senior Thesis</span></h3>
-                            <p>Leila Hudson</p>
-                            <p>
-                                Laser frequency combs (LFCs) can be used to calibrate high-resolution spectrographs to detect and characterize exoplanets. Spectral shaping serves an important role in increasing the signal-to-noise ratio (SNR) for effective detection. However, the large range of intensity across the LFC spectrum makes it infeasible to optimally use the entire comb; this leads to a reduced overall precision of calibration. To avoid this, setups are used to flatten the output spectrum before sending it to the spectrograph; these setups usually involve bulk optics. This research uses an all-photonic on-chip spectral shaper that flattens the spectrum of an LFC. The goal of my thesis is to improve the extraction, reduction, fitting, and subsequent control in an algorithmic manner with this spectral shaper to achieve a flat spectrum of an LFC. To flatten the power spectrum, I apply voltage changes to Mach-Zehnder Interferometers (MZIs) and Thermo-Optic Phase Modulators (TOPMs) at different spectral channels. I develop linear, logarithmic, and hybrid control-loop algorithms and test each model’s performance. I also test if the models are capable of converging to different reference power lines. I conduct field testing at the California Institute of Technology in Pasadena, CA. I find that the linear model performs the best since it reaches a defined power threshold and has sufficient convergence.
-                            </p>
-                            <p onclick="event.stopPropagation()" class="publication-links"> 
-                                <a href="https://dataspace.princeton.edu/handle/88435/dsp018k71nm43n" target="_blank" class="publication-link-btn">Paper</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
                     
                     <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
                         <div class="publication" onclick="window.open('https://gradientscience.org/contextcite-applications', '_blank')">
